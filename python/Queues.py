@@ -21,6 +21,8 @@ print(queue.size())
 print(queue.report())
 print(queue.delete())
 print(queue.size())
+
+queue.add("forth item in queue")
 print(queue.report())
 print(queue.delete())
 print(queue.size())
