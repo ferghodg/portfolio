@@ -1,3 +1,5 @@
+var chapterOpen=false;
+
 // jQuery to collapse the navbar on scroll
 function collapseNavbar() {
     if ($(".navbar").offset().top > 50) {
@@ -59,13 +61,96 @@ function contactPressed(){
 			$('form').slideToggle();
 		}
 }
+$( document ).ready(function() {
+	$( "div[id^='p']" ).css("display", "none");
+		$("#theoryLink").addClass("cursortext");
+});
 //expand boxes whhen selected
-$( "#c10" ).click(function() {
-	$( "#apps" ).toggle( "slide", 500 );
-	$( "#websites" ).toggle( "slide", 500 );
-	$("#theory").animate({
-    right: $("#theory").parent().width() / 2 - $("#theory").width() / 2
-}, 2000);
+$( "a[id^='c']").click(function() {
+	if(!chapterOpen){
+		var chapNum=$(this).attr('id').substr(1, $(this).attr('id').length).toString();
+		
+		$( "#apps>h3" ).animate({
+			width: 0,
+			padding: 0,
+			display:'none'
+		}, 1000);
+	
+		
+		$( "#websites>h3" ).animate({
+			width: 0,
+			padding: 0,
+			display:'none'
+		}, 1000);
+		$( "#apps" ).animate({
+			width: 0,
+			padding: 0,
+			display:'none'
+		}, 1000);
+		
+		$("#p"+chapNum).delay(1000).fadeIn(1000);
+		$( "#websites" ).animate({
+			width: 0,
+			padding: 0,
+			display:'none'
+		}, 1000, function() {
+			$("#websites>h3, #apps>h3").css("display", "none");
+			setTimeout(
+			function(){
+				chapterOpen=true;
+			}, 500);
+		});
+		$("#theory").animate({
+			width: '100%',
+			margin: 'auto',
+		}, 1000);
+		$("#c"+chapNum).parent().addClass("no-underline");
+		$("#theoryLink").addClass("cursorpointer");
+		$("#theoryLink").removeClass("cursortext");
+		$( "a[id^='c']" ).parent().slideToggle();
+		$("#c"+chapNum).parent().slideToggle();
+	}
+});
+//close theory
+$("#theoryLink").click(function(){
+	if(chapterOpen){
+		var chapNum=$("a[id^='c']:visible").attr('id').substr(1, $(this).attr('id').length).toString();
+		$("#websites>h3, #apps>h3").css("display", "block");
+		$( "#apps" ).animate({
+			width: "33.33333%",
+			display:'block'
+		}, 1000);
+		
+		$("#p"+chapNum).fadeOut(300);
+		$( "#websites, #apps" ).animate({
+			width: "33.33333%",
+			padding : "0px 15px 0px 15px",
+			display:'block'
+		}, 1000, function() {
+			//so you cant click to open while animating
+			setTimeout(
+			  function() 
+			  {
+						chapterOpen=false;
+			  }, 1000);
+		});
+		$( "#websites>h3, #apps>h3" ).animate({
+			display: "block",
+			width: "100%"
+		}, 1000);
+		$( "#theory").animate({
+			width: "33.33333%",
+		}, 1000);
+		
+		$("#p"+chapNum).animate({
+			display:'none'
+		}, 1000);
+		$( "a[id^='c']" ).parent().slideToggle();
+		$("#theoryLink").addClass("cursortext");
+		$("#theoryLink").removeClass("cursorpointer");
+		$("#c"+chapNum).parent().removeClass("no-underline");
+		$("#c"+chapNum.toString()).parent().slideToggle();
+	}
 });
 //fix contact button when scrollerd past form
 $(window).scroll(function(){

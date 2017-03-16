@@ -4,7 +4,18 @@
 }
 a{
 	color:white;
-
+	cursor:pointer;
+}
+a:hover{
+	cursor:pointer;
+}
+.cursortext{
+	cursor:text !important;
+	
+}
+.cursorpointer{
+	cursor:pointer !important;
+	
 }
 html{
 	width:100%;
@@ -13,7 +24,10 @@ html{
 	color:rgba(255, 255, 255, 0.8);
 	background-color:transparent;
 }
-
+#theoryLink>h3:hover, #theoryLink:hover{
+	color:white;
+	text-decoration:none;
+}
 
   @media (min-width: 768px) {
   .navbar-custom {
@@ -62,7 +76,23 @@ h3{
 #Computing{
 	background-color:#7c2c03;
 	padding-top:60px;
+	overflow-y:scroll;
+	max-height:600px;
 }
+#Computing::-webkit-scrollbar { 
+    display: none; 
+}
+div[id^='p']{
+	margin:30px;
+}
+.no-underline>a, .no-underline>a:hover, .no-underline{
+	color:white;
+	font-size:20px;
+	text-decoration:none;
+	list-style-type:none;
+	cursor:auto;
+}
+
 #cycling{
 	background-image:url(https://dgtzuqphqg23d.cloudfront.net/29kBLObmJidg465X1Q5DWyQ19gJE5xqcPyf9g4n6WFQ-2048x1152.jpg);
 	padding-top:60px;
