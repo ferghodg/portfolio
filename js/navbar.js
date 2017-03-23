@@ -1,4 +1,5 @@
 var chapterOpen=false;
+var chapterClosed=true;
 
 // jQuery to collapse the navbar on scroll
 function collapseNavbar() {
@@ -67,7 +68,8 @@ $( document ).ready(function() {
 });
 //expand boxes whhen selected
 $( "a[id^='c']").click(function() {
-	if(!chapterOpen){
+	if(chapterClosed){
+		chapterClosed=false;
 		var chapNum=$(this).attr('id').substr(1, $(this).attr('id').length).toString();
 		
 		$( "#apps>h3" ).animate({
@@ -114,6 +116,7 @@ $( "a[id^='c']").click(function() {
 //close theory
 $("#theoryLink").click(function(){
 	if(chapterOpen){
+		chapterOpen=false;
 		var chapNum=$("a[id^='c']:visible").attr('id').substr(1, $(this).attr('id').length).toString();
 		$("#websites>h3, #apps>h3").css("display", "block");
 		$( "#apps" ).animate({
@@ -131,7 +134,7 @@ $("#theoryLink").click(function(){
 			setTimeout(
 			  function() 
 			  {
-						chapterOpen=false;
+						chapterClosed=true;
 			  }, 1000);
 		});
 		$( "#websites>h3, #apps>h3" ).animate({
