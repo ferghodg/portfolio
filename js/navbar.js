@@ -51,16 +51,11 @@ function loop(){
 }
 
 function contactPressed(){
-		if(formOpen){
-			formOpen=false;
-			$(".contact-dropdown").addClass("atbottom", 400, 'swing');
-			$('form').slideToggle();
-		}
-		else{
-			formOpen=true;
-			$(".contact-dropdown").removeClass("atbottom", 1000, 'swing');
-			$('form').slideToggle();
-		}
+	if(!formOpen){
+		openForm();
+	}else{
+		closeForm();
+	}
 }
 $( document ).ready(function() {
 	$( "div[id^='p']" ).css("display", "none");
@@ -100,7 +95,7 @@ $( "a[id^='c']").click(function() {
 			setTimeout(
 			function(){
 				chapterOpen=true;
-			}, 500);
+			}, 1000);
 		});
 		$("#theory").animate({
 			width: '100%',
@@ -160,10 +155,28 @@ $(window).scroll(function(){
 	if(!formOpen){
 		//$(".contact-dropdown").css("bottom", 0)
 	}else{
-		$(".contact-dropdown").css("bottom", Math.max(0, $(window).height()+$(this).scrollTop()-2355));
+		var scrollBottom=Math.abs($(document).scrollTop()-$( document ).height()+$( window ).height());
+		console.log(Math.abs($(document).scrollTop()-$( document ).height()+$( window ).height()));
+		if($("#contact").outerHeight()-scrollBottom<0){
+			$(".contact-dropdown").css("bottom", 0)
+		}else{
+		$(".contact-dropdown").css("bottom", $("#contact").outerHeight()-scrollBottom);
+		}
 	}
 });
-
+$( window ).resize(function() {
+if(!formOpen){
+		//$(".contact-dropdown").css("bottom", 0)
+	}else{
+		var scrollBottom=Math.abs($(document).scrollTop()-$( document ).height()+$( window ).height());
+		console.log(Math.abs($(document).scrollTop()-$( document ).height()+$( window ).height()));
+		if($("#contact").outerHeight()-scrollBottom<0){
+			$(".contact-dropdown").css("bottom", 0)
+		}else{
+		$(".contact-dropdown").css("bottom", $("#contact").outerHeight()-scrollBottom);
+		}
+	}
+});
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {

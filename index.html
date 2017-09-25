@@ -71,6 +71,7 @@
 					<li><a id="c11">Chapter 11</a></li>
 					<li><a id="c12">Chapter 12</a></li>
 					<li><a id="c13">Chapter 13</a></li>
+					<li><a id="c0">Python</a></li>
 				</ul>
 				<div id="chapterContents">
 					<div id="p1">
@@ -596,6 +597,10 @@
 						To convert from binary to decimal you can sipply write out the binary column headings and put the binary number below.
 						Add up the headings with 1's below to get the number in decimal.
 						</p>
+						<p>Examples of converting numbers:</p>
+						<img src="./img/decimalbinaryconversions.jpg" style="max-width:70%"/>
+						<br/>
+						<img src="./img/hextobinary.jpg" style="max-width:70%"/>
 						<h3>Twos Complement</h3>
 						<p>Two's Complement is used to represent negative numbers.
 						It involves having the first place as a negative number.
@@ -603,6 +608,8 @@
 						You simple invert a positive numbers by NOTing it the add one to it.
 						This ensures that the answer when it is subtracted is in the same form as the input.
 						It also gets rid of the need for a sign bit which is not a good idea as it involves mixing boolean data types with an integer data type.</p>
+						
+						<p>Examples of twos complement</p>
 						<h3>Sign and magnitude</h3>
 						<p>
 						The sign and magnitude uses the first Most Significant bit as the sign and the other bits are used to represent the magnitude or absolute value of the number.
@@ -611,13 +618,16 @@
 						
 						</P>
 						<h3>Hexadecimal</h3>
-						<p>HExadecimal is used by programmers to represent binary numbers.  It is usefulas you only need 2 Hex digits to represent a byte.
+						<p>Hexadecimal is used by programmers to represent binary numbers.  It is usefulas you only need 2 Hex digits to represent a byte.
 						There is a direct relationship between each nibble(4 bits) and a hex number.
 						To convert from hex to decimal you multiply the each digit by 16^(place value -1) then add them all together.
 						To convert to hex you can divide by 16 and take the remainder each time. as the units then 16s then 256 place until you get 0.
 						To convert from hext to and from binary you can simply use the fact that each nibble represents a digit and convert one digit or nibble at a time.
 						Computers do not work in hex but it is often more conveinient for them to output a hex number instead of converting to decimal.</p>
+						<p>Examples of converting hex numbers:</p>
+						<img src="./img/convertinghex.jpeg" style="max-width:70%"/>
 						<br/><br/>
+					
 						<h3><b>Images, sounds and Instructions</b></h3>
 						<br/><h3>Images</h3>
 						<p>Images are also represented in binary.  We use binary to represent colour.  1 bit can represent two colours which is usually a black and white image.
@@ -648,13 +658,120 @@
 						<h3>Instructions</h3>
 						<p>Instructions are also stored in binary.  Instructions often are made of an operator and an operand.  The first part of an instruction is the operantor which tells to computer what to so on the operand.
 						The operand often points to the data location where the data to perform the calculation on is stored.
-						The computer has no way of determining what is supposed to be data and what is an instruction so if some data has the same bit pattern as an instruction in will perfor the instruction.</p>
+						The computer has no way of determining what is supposed to be data and what is an instruction so if some data has the same bit pattern as an instruction in will perform the instruction.</p>
+						
+						<h3>Practise Questions:</h3><br/>
+						<img src="./img/Chapter 11 practise question.png"/>
+						<ol>
+						<li>273 as a binary number is:100010001
+						"73 as a hexidecimal number is 111</li>
+						<li>-89 using 8 bit sign and magnitude is 11011001
+						-89 in 8 bit twos complement binary is 10100111</li>
+						<li>Increasing an images size increases the image file size because it is storing more pixels.  Increasing the colour depth affects the size ans each pixel takes up more bits of data.</li>
+						<li>Metadata</li>
+						</ol>
 					</div>
 					<div id="p12">
 						<h3><b>Computer arithemeric</b></h3>
 						<p>This chapter is about performing operations on binary numbers such as addition and subtraction with positve, negative and floating point numbers.</p>
 						<h3>Binary addition</h3>
 						<p>To add numbers in binary you do the same as in decimal by carrying digits when they go over 1.  Here is an example to demonstrate this:
+						</p>
+						<br/>
+						<p> Here are some examples of adding and subtracting integers in binary:</p>
+						<img src="binary addition and subtraction.jpg"/>
+						<h3>Adding Two's Complement</h3>
+						<p>Two's complement numbers are added together like normal binary numbers.
+						When numbers overflow into the negative bit, an underflow error is produced where the result is negative rather than positive.
+						To subtract Two's complement numbers, you can simply add two numbers in twos complement together and this will behave the same way as normal addition but the anser will be in twos complement.
+						</p>
+						<h3>Example of Twos complement arithmetic</h3>
+						<p>to do 123-43 you first convert 43 into Twos complement then add both numbers:</p>
+						<table><tbody>
+							<tr>
+								<td><p></p></td>
+								<td><p>Decimal</p></td>
+								<td><p>Binary</p></td>
+							</tr>
+							<tr>
+								<td><p>Normal Integer</p></td>
+								<td><p>123</p></td>
+								<td><p>01111011</p></td>
+							</tr>
+							<tr>
+								<td><p>Two's Complement</p></td>
+								<td><p>123</p></td>
+								<td><p>01111011</p></td>
+							</tr>
+							<tr>
+								<td><p>Normal Integer</p></td>
+								<td><p>-43</p></td>
+								<td><p>-00101011</p></td>
+							</tr>
+							<tr>
+								<td><p>One's Complement</p></td>
+								<td><p>-43</p></td>
+								<td><p>11010100</p></td>
+							</tr>
+							<tr>
+								<td><p>Two's Complement</p></td>
+								<td><p>-43</p></td>
+								<td><p>11010101</p></td>
+							</tr>
+							<tr>
+								<td><p>Addition</p></td>
+								<td><p>11010101+01111011</p></td>
+								<td><p>=101010000</p></td>
+							</tr>
+							<tr>
+								<td><p>Ignore MSB</p></td>
+								<td><p>=01010000</p></td>
+								<td><p>=80</p></td>
+							</tr>
+							<tr></tr>
+						</tbody></table>
+						<br/>
+						<br/>
+						<h3>Floating point numbers</h3>
+						<p>Floating point numbers are used by computers to represent real numbers eg. fractions uch as 1/8 and irrational numbers such as PI and e.
+						It similar to standard form as it uses an exponent and a mantissa, and a sign bit.
+						The mantissa takes up most bits and can be positive or negative based on the sign bit.
+						Without the exponent, the decimal point is always after the MSB and the exponent shifts it that many places to the right.
+						If the exponent is negative, it will be shifted to the left creating very small numbers.
+						This is why it is called floating point as the decimal point can float around the number.</p>
+						<h3>Examples</h3>
+						<p>The number 45.875 would be represented as the value of 42.25 in decimal with a mantissa of how many places to the right the decimal point moves from the MSB.
+						45.875 in binary is 101101.111  moving the decimal point to the MSB gives 1.01101111</p>
+						<h3>Questions</h3>
+						<p>Convert the following to denary</p>
+						<p>0 101010000 000010</p>
+						<p>Sign bit is zero so it is positive.
+						The exponent is two so the decimal point is shifted two places to the right.
+						The Mantissa is .10101000 so this is 10.1010000 which is 2.625</p>
+						<p>0  110110000  000100</p>
+						<p>The  number is positive and the exponent is 4 meaning that the mantissa becomes +1101.10000 which is 13.5 in decimal</p>
+						<p>0  101000000  111111</p>
+						<p>The exponent in twos compliment is -1 meaning the point is shifted one place to the left.
+						The mantissa becomes 1.01000000 which is 1.25 in denary</p>
+						<p>1  001101000  000110</p>
+						<p>The sign is 1 so it is negative and the exponent is 6 so the mantissa is 001101.000 which is 13 in denary</p>
+						<h3>Normalisation</h3><p> is used to remove leading zero bits in a floating point number.  The purpose of this is to save space and allow for extra accuracy. 
+						Normalisation puts the floating point between the zero and 1</p>
+						<h3>Examples</h3>
+						<p>0 000000110 000111 becomes .111 as it has shifted 6 places to the right so the exponent is 7-6 which is 1 so the final number is 0 110 000001</p>
+						<p>0 000010111 becomes .10111 shifted two places to the right so the exponent is two.  The final number is 0 10111 000010</p>
+						<h3>Logical Operations and Masking</h3>
+						<p>The ALU can perform logical operations on numbers as well as addition and subtraction.
+						The simplest of these operations is the NOT operation which inverts all the bits. 1>0 and 0>1.
+						This is useful in thngs such converting a number into twos complement which is done by flipping the bits and adding 1.
+						More complex operations such as AND use a mask.  This is another number which tells the ALU which bit to comppare each bit in the number two.  For example a mask migh be 11110000.
+						This will round the number to four places in binary when the AND operation is used and could be useful in calculations where accuracy is not important such as compressing an image.
+						The OR and XOR do the same but have their own rules. XOR is 1 when the input is 1 and 0 or 0 and 1,  OR is 1 when The input contains a 1</p>
+						<h3>Examples</h3>
+						<p>01101011 maked with 11001101 using AND is 01001001.
+						01101011 maked with 11001101 using OR is 11101111.
+						01101011 maked with 11001101 using XOR is 10100110.
+						The mask 00001111 using XOR would reverse the first four bits and leave the last four unchanged.
 						</p>
 					</div>
 					<div id="p13">
@@ -684,6 +801,14 @@
 							<li><a href="./python/Stacks.py">Stack demonstration in Python</a></li>
 							<li><a href="./python/Queues.py">Queue demonstration in Python</a></li>
 							<li><a href="./python/CircularQueues.py">Circular Queue demonstration in Python</a></li>
+						</ul>
+					</div>
+					<div id="p0">
+						<p>Here is a list of all the python programs I have made</p>
+						<br/><br/>
+						<ul>
+							<li><a href="./python/Banner.py">Stack demonstration in Python</a></li>
+							<li><a href="./python/textChanger.py">Queue demonstration in Python</a></li>
 						</ul>
 					</div>
 				</div>
